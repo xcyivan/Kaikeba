@@ -1,1 +1,1 @@
-# kaikeba
+# A mini Web project mocking kaikeba.com

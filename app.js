@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var openCourseRouter = require('./routes/open-course');
+var vipCourseRouter = require('./routes/vip-course');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 导入路由模块
 app.use('/', indexRouter);
+app.use('/open-course', openCourseRouter);
+app.use('/vip-course', vipCourseRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
