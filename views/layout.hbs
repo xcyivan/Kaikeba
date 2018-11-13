@@ -5,9 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <a href='/'>Home</a>
-    <a href='/open-course'>Open Course</a>
-    <a href='/vip-course'>VIP Course</a>
+    <!-- 导航栏 -->
+    <div class='nav'>
+      <a href='/'>Home</a>
+      <a href='/open-course'>Open Course</a>
+      <div>
+        {{#each courses}}
+          <a href='{{url}}'>{{name}}</a>
+        {{/each}}
+      </div>
+      <a href='/vip-course'>VIP Course</a>
+    </div>
     {{{body}}}
   </body>
 </html>

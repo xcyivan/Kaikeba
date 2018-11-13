@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const {initLocals} = require('./middleware');
+
 var indexRouter = require('./routes/index');
 var openCourseRouter = require('./routes/open-course');
 var vipCourseRouter = require('./routes/vip-course');
@@ -16,14 +18,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// 应用、指定中间件，线性处理
+app.use(logger('dev')); // 日志
+app.use(express.json()); // 获取ajax传递json
+app.use(express.urlencoded({ extended: false })); // 解析url参数
+app.use(cookieParser()); // cookie解析
 // 设置静态目录
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 导入路由模块
+// 导入自定义的中间件
+app.use(initLocals);
+
+// 导入路由模块，也是中间件
 app.use('/', indexRouter);
 app.use('/open-course', openCourseRouter);
 app.use('/vip-course', vipCourseRouter);
