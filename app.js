@@ -1,17 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 const {initLocals} = require('./middleware');
 
-var indexRouter = require('./routes/index');
-var openCourseRouter = require('./routes/open-course');
-var vipCourseRouter = require('./routes/vip-course');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const openCourseRouter = require('./routes/open-course');
+const vipCourseRouter = require('./routes/vip-course');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
 // view engine setup
 // __dirname 当前文件的绝对路径
